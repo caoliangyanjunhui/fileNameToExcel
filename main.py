@@ -12,9 +12,7 @@ class ClientFrame(wx.Frame):
 		wx.Frame.__init__(
 			self, None, -1, u'文件名获取工具 v0.1', size=(1000,600)
 			)
-		self.fileList = []
 		self.showList = []
-		self.files = []
 		self.folderPath = ''
 		self.lastOpenFolderPath = ''
 		self.lastSaveFolderPath = ''
@@ -56,7 +54,7 @@ class ClientFrame(wx.Frame):
 		self.SetStatusBar(self.statusBar)
 
 	def addIcon(self):
-		icon = wx.Icon('ico/rename32.ico', wx.BITMAP_TYPE_ICO)
+		icon = wx.Icon('ico/excel.ico', wx.BITMAP_TYPE_ICO)
 		self.SetIcon(icon)
 
 	def bindEvents(self):
@@ -67,7 +65,6 @@ class ClientFrame(wx.Frame):
 		dlg = wx.DirDialog(self, u"选择要批处理的目录", defaultPath=self.lastOpenFolderPath, 
 						  style=wx.DD_DIR_MUST_EXIST | wx.DD_CHANGE_DIR | wx.DD_DEFAULT_STYLE)
 		if dlg.ShowModal() == wx.ID_OK:
-			self.files = []
 			self.folderPath = dlg.GetPath()
 			self.lastOpenFolderPath = self.folderPath
 			self.openFolder(self.folderPath)
